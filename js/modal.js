@@ -1,27 +1,18 @@
-const refs = {
-  openModalBtn: document.querySelector('[data-modal-open]'),
-  closeModalBtn: document.querySelector('[data-modal-close]'),
-  modal: document.querySelector('[data-modal]'),
-  backdrop: document.querySelector('.backdrop'),
-};
+(() => {
+  const refs = {
+    // Додати атрибут data-modal-open на кнопку відкриття
+    openModalBtn: document.querySelector("[data-modal-open]"),
+    // Додати атрибут data-modal-close на кнопку закриття
+    closeModalBtn: document.querySelector("[data-modal-close]"),
+    // Додати атрибут data-modal на бекдроп модалки
+    modal: document.querySelector("[data-modal]"),
+  };
 
-refs.openModalBtn.addEventListener('click', toggleModal);
-refs.closeModalBtn.addEventListener('click', toggleModal);
-refs.backdrop.addEventListener('click', handleBackdropClick);
-window.addEventListener('keydown', handleKeyDown);
+  refs.openModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", toggleModal);
 
-function toggleModal() {
-  refs.modal.classList.toggle('is-hidden');
-}
-
-function handleBackdropClick(event) {
-  if (event.target === refs.backdrop) {
-    toggleModal();
+  function toggleModal() {
+    // is-open це клас який буде додаватися/забиратися на бекдроп при натисканні на кнопки
+    refs.modal.classList.toggle("is-open");
   }
-}
-
-function handleKeyDown(event) {
-  if (event.code === 'Escape' && !refs.modal.classList.contains('is-hidden')) {
-    toggleModal();
-  }
-}
+})();
